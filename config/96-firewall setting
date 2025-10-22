@@ -1,0 +1,12 @@
+uci add firewall redirect
+uci set firewall.@redirect[-1].dest='lan'
+uci set firewall.@redirect[-1].target='DNAT'
+uci set firewall.@redirect[-1].name='Divert-DNS, port 53'
+uci set firewall.@redirect[-1].src='wan'
+uci set firewall.@redirect[-1].src_dport='53'
+uci set firewall.@redirect[-1].dest_port='53'
+uci add_list firewall.@zone[1].network=Modem
+uci set firewall.@defaults[0].flow_offloading=1
+uci set firewall.@defaults[0].flow_offloading_hw=1
+uci commit firewall
+service firewall restart
