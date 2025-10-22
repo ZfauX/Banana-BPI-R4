@@ -1,0 +1,3 @@
+uci set 3ginfo.@3ginfo[0].network=wan
+uci set 3ginfo.@3ginfo[0].device=/dev/ttyUSB3
+uci commit 3ginfo
