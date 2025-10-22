@@ -1,0 +1,16 @@
+uci set wireless.radio0.channel=auto
+uci set wireless.radio0.country=RU
+uci set wireless.radio0.htmode=EHT160
+uci set wireless.radio0.background_radar=1
+uci set wireless.radio1.channel=auto
+uci set wireless.radio1.country=RU
+uci set wireless.radio2.channel=auto
+uci set wireless.radio2.country=RU
+uci set wireless.radio2.background_radar=1
+uci set wireless.ap_mld_1.ssid=${AP_MLD_1.SSID}
+uci set wireless.ap_mld_1.key=${AP_MLD_1.KEY}
+uci del wireless.default_radio0
+uci del wireless.default_radio1
+uci del wireless.default_radio2
+uci commit wireless
+service network restart
