@@ -1,0 +1,10 @@
+uci set system.@system[0].hostname=Gateway
+uci set system.@system[0].zonename=Europe/Moscow
+uci set system.@system[0].timezone=MSK-3
+uci del system.ntp.server
+uci add_list system.ntp.server='217.170.87.229' # 0.ru.pool.ntp.org
+uci add_list system.ntp.server='151.0.2.53'     # 1.ru.pool.ntp.org
+uci add_list system.ntp.server='147.45.251.137' # 2.ru.pool.ntp.org
+uci add_list system.ntp.server='46.138.254.88'  # 3.ru.pool.ntp.org
+uci commit system
+service system restart
