@@ -1,0 +1,11 @@
+service dnsmasq stop
+uci set dhcp.@dnsmasq[0].noresolv="1"
+uci set dhcp.@dnsmasq[0].cachesize='0'
+uci set dhcp.@dnsmasq[0].localuse='1'
+uci -q delete dhcp.@dnsmasq[0].server
+uci add_list dhcp.@dnsmasq[0].server="127.0.0.53"
+sed -i "32 s/.*/server_names = ['${DNSCRYPT_SERVER}']/" /etc/dnscrypt-proxy2/*.toml
+sed -i "183 s/.*/use_syslog = true/" /etc/dnscrypt-proxy2/*.toml
+uci commit dhcp
+service dnsmasq start
+service dnscrypt-proxy restart
