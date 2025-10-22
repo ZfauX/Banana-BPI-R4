@@ -1,0 +1,38 @@
+uci set sms_tool_js.@sms_tool_js[0].storage=ME
+uci set sms_tool_js.@sms_tool_js[0].readport=/dev/ttyUSB3
+uci set sms_tool_js.@sms_tool_js[0].sendport=/dev/ttyUSB3
+uci set sms_tool_js.@sms_tool_js[0].ussdport=/dev/ttyUSB3
+uci set sms_tool_js.@sms_tool_js[0].atport=/dev/ttyUSB3
+echo 'Balance;*100#' > /etc/modem/ussdcodes.user
+echo 'Remaining minutes, gigabytes, and tariff validity;*101#' >> /etc/modem/ussdcodes.user
+echo 'My number;*103#' >> /etc/modem/ussdcodes.user 
+echo 'Signal Quality/Strength -> AT+CSQ;AT+CSQ' > /etc/modem/atcmmds.user
+echo 'Check IMEI -> AT+GSN;AT+GSN' >> /etc/modem/atcmmds.user
+echo 'Change IMEI -> AT+EGMR=1,7,"xxxx" (хххх - new IMEI);AT+EGMR=1,7,"xxxx"' >> /etc/modem/atcmmds.user
+echo 'Firmware version -> ATI;ATI' >> /etc/modem/atcmmds.user
+echo 'Check network configuration -> AT+QCFG="nwscanmode";AT+QCFG="nwscanmode"' >> /etc/modem/atcmmds.user
+echo 'Select network configuration auto -> AT+QCFG="nwscanmode",0,1;AT+QCFG="nwscanmode",0,1' >> /etc/modem/atcmmds.user
+echo 'Select network configuration GSM only -> AT+QCFG="nwscanmode",1,1;AT+QCFG="nwscanmode",1,1' >> /etc/modem/atcmmds.user
+echo 'Select network configuration WCDMA only -> AT+QCFG="nwscanmode",2,1;AT+QCFG="nwscanmode",2,1' >> /etc/modem/atcmmds.user
+echo 'Select network configuration 4G-LTE only -> AT+QCFG="nwscanmode",3,1;AT+QCFG="nwscanmode",3,1' >> /etc/modem/atcmmds.user
+echo 'Network information (ID, RSRP, RSRQ, SINR) -> AT+QENG="servingcell";AT+QENG="servingcell"' >> /etc/modem/atcmmds.user
+echo 'Neighboring cells (frequency, sector, RSRQ, RSRP, RSSI) -> AT+QENG="neighbourcell";AT+QENG="neighbourcell"' >> /etc/modem/atcmmds.user
+echo 'Current range -> AT+QNWINFO;AT+QNWINFO' >> /etc/modem/atcmmds.user
+echo 'Current band range -> AT+QCFG="band";AT+QCFG="band"' >> /etc/modem/atcmmds.user
+echo 'Aggregation check - > AT+QCAINFO;AT+QCAINFO' >> /etc/modem/atcmmds.user
+echo 'Resetting the network to default -> AT+QCFG="band",8d0,1a1880800d5,0;AT+QCFG="band",8d0,1a1880800d5,0' >> /etc/modem/atcmmds.user
+echo 'Select band range - > AT+QCFG="band",0,80044,0,1;AT+QCFG="band",0,80044,0,1' >> /etc/modem/atcmmds.user
+echo 'Module connection type QMI/PPP/Default -> AT+QCFG="usbnet",0;AT+QCFG="usbnet",0' >> /etc/modem/atcmmds.user
+echo 'Module connection type ECM -> AT+QCFG="usbnet",1;AT+QCFG="usbnet",1' >> /etc/modem/atcmmds.user
+echo 'Module connection type MBIM -> AT+QCFG="usbnet",2;AT+QCFG="usbnet",2' >> /etc/modem/atcmmds.user
+echo 'Reboot the modem -> AT+QPOWD=1;AT+QPOWD=1' >> /etc/modem/atcmmds.user
+echo 'Check 256QAM -> AT+QCFG="dl_256qam";AT+QCFG="dl_256qam"' >> /etc/modem/atcmmds.user
+echo 'Enabling 256QAM -> AT+QCFG="dl_256qam",1;AT+QCFG="dl_256qam",1' >> /etc/modem/atcmmds.user
+echo 'Turning on GPS -> AT+QGPS=1;AT+QGPS=1' >> /etc/modem/atcmmds.user
+echo 'GPS disabling -> AT+QGPSEND;AT+QGPSEND' >> /etc/modem/atcmmds.user
+echo 'Temperature readings -> AT+QTEMP;AT+QTEMP' >> /etc/modem/atcmmds.user
+echo 'Reset settings to default -> AT&F;AT&F' >> /etc/modem/atcmmds.user
+echo 'Reset settings to default -> AT&F1;AT&F1' >> /etc/modem/atcmmds.user
+echo 'Check the BS lock -> AT+QNWLOCK="common/4g";AT+QNWLOCK="common/4g"' >> /etc/modem/atcmmds.user
+echo 'Lock the BS -> AT+QNWLOCK="common/4g",1,1602,172;AT+QNWLOCK="common/4g",1,1602,172' >> /etc/modem/atcmmds.user
+uci commit 3ginfo
