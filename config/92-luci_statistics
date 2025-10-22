@@ -1,0 +1,7 @@
+uci set luci_statistics.collectd_sensors.enable=1
+uci add_list luci_statistics.collectd_sensors.Sensor=cpu_thermal-virtual-0/temperature-temp1
+uci add_list luci_statistics.collectd_sensors.Sensor=mt7996_phy0.1-pci-0100/temperature-temp1
+uci add_list luci_statistics.collectd_sensors.Sensor=mt7996_phy0.2-pci-0100/temperature-temp1
+uci add_list luci_statistics.collectd_sensors.Sensor=mt7996_phy0.0-pci-0100/temperature-temp1
+uci commit luci_statistics
+service collectd restart
