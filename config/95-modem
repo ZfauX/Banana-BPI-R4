@@ -1,10 +1,9 @@
 uci set network.Modem=interface
-uci set network.Modem.proto=modemmanager
-uci set network.Modem.device=/sys/devices/platform/soc/11200000.usb/usb1/1-1/1-1.1
-uci set network.Modem.apn=${MODEM_APN}
-uci add_list network.Modem.allowedauth=none
-uci set network.Modem.iptype=ipv4
-uci set network.Modem.loglevel=ERR
+uci set network.Modem.proto=qmi
+uci set network.Modem.device=/dev/cdc-wdm0
+uci set network.Modem.apn=internet.yota
+uci set network.Modem.auth=none
+uci set network.Modem.pdptype=ipv4
 uci set network.wan.peerdns='0'
 uci set network.wan6.peerdns='0'
 uci commit network
