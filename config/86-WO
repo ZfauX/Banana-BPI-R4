@@ -1,0 +1,1 @@
+echo "options mt7996e wed_enable=Y sr_scene_detect=Y" >> /etc/modules.conf
