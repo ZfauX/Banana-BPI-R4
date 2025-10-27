@@ -1,0 +1,4 @@
+uci add_list network.globals.packet_steering=1
+uci add_list network.globals.steering_flows=128
+uci commit network
+service network restart
