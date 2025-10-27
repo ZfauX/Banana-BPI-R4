@@ -5,7 +5,7 @@ groupadd -r "${SUDO_GROUP}"
 useradd -m -G "${SUDO_GROUP}" -s "${USER_SHELL}" "${USER_NAME}"
 echo "root:M{vW)>4?-O5JB$;" | chpasswd
 passwd -l "${SUDO_USER}"
-echo "zfaux:L#NdpxZ>IvL{I.f" | chpasswd
+echo "zfaux:${USER_PASS}" | chpasswd
 echo "%${SUDO_GROUP} ALL=(ALL) ALL" > /etc/sudoers.d/00-sudo
 USER_HOME="$(eval echo ~"${USER_NAME}")"
 mkdir -p "${USER_HOME}"/.ssh
