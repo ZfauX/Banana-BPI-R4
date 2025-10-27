@@ -9,13 +9,13 @@ uci set wireless.radio1.background_radar=1
 uci set wireless.radio2.channel=auto
 uci set wireless.radio2.country=RU
 uci set wireless.radio2.background_radar=1
-uci set wireless.default_radio0.ssid=TARDIS
+uci set wireless.default_radio0.ssid=${RADIO1.SSID}
 uci set wireless.default_radio0.encryption=sae-mixed
-uci set wireless.default_radio0.key=88888888
+uci set wireless.default_radio0.key=${RADIO1.KEY}
 uci set wireless.default_radio0.ocv=0
-uci set wireless.default_radio1.ssid=TARDIS WiFi 5Ghz
+uci set wireless.default_radio1.ssid=${RADIO2.SSID}
 uci set wireless.default_radio1.encryption=sae-mixed
-uci set wireless.default_radio1.key=88888888
+uci set wireless.default_radio1.key=${RADIO2.KEY}
 uci set wireless.default_radio1.ocv=0
 uci commit wireless
 service network restart
