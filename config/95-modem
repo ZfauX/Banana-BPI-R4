@@ -1,7 +1,7 @@
 uci set network.Modem=interface
 uci set network.Modem.proto=qmi
 uci set network.Modem.device=/dev/cdc-wdm0
-uci set network.Modem.apn=internet.yota
+uci set network.Modem.apn=${MODEM_APN}
 uci set network.Modem.auth=none
 uci set network.Modem.pdptype=ipv4
 uci set network.wan.peerdns='0'
